@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `GiroPerfettoDataBase`.`articolo` (
   `autore` INT NOT NULL,
   `prezzoarticolo` DECIMAL(4) NOT NULL,
   PRIMARY KEY (`idarticolo`),
-  INDEX `fk_articolo_autore_idx` (`autore` ASC) VISIBLE,
+  INDEX `fk_articolo_autore_idx` (`autore` ASC),
   CONSTRAINT `fk_articolo_autore`
     FOREIGN KEY (`autore`)
     REFERENCES `GiroPerfettoDataBase`.`venditore` (`idautore`)
@@ -68,8 +68,8 @@ CREATE TABLE IF NOT EXISTS `GiroPerfettoDataBase`.`articolo_ha_categoria` (
   `articolo` INT NOT NULL,
   `categoria` INT NOT NULL,
   PRIMARY KEY (`articolo`, `categoria`),
-  INDEX `fk_articolo_has_categoria_categoria1_idx` (`categoria` ASC) VISIBLE,
-  INDEX `fk_articolo_has_categoria_articolo1_idx` (`articolo` ASC) VISIBLE,
+  INDEX `fk_articolo_has_categoria_categoria1_idx` (`categoria` ASC),
+  INDEX `fk_articolo_has_categoria_articolo1_idx` (`articolo` ASC),
   CONSTRAINT `fk_articolo_has_categoria_articolo1`
     FOREIGN KEY (`articolo`)
     REFERENCES `GiroPerfettoDataBase`.`articolo` (`idarticolo`)
