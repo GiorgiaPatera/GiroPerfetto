@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Registrazione</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <style>
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .registration-form {
+            background-color: #90caf9;
+            border-radius: 10px;
+            padding: 20px 30px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            text-align: left;
+            width: 50%;
+            margin: auto;
+        }
+
+        .registration-form h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .registration-form h1,p{
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .registration-form label {
+            display: block;
+            margin-bottom: 5px;
+            color: white;
+            font-size: 14px;
+        }
+
+        .registration-form input[type="text"],
+        .registration-form input[type="email"],
+        .registration-form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .registration-form button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .registration-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .image-container {
+            width: 50%;
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Benvenuto</h1>
+    </header>
+
+    <main>
+        <div class="flex-container">
+            <div class="registration-form">
+                <h1>Registrazione</h1>
+                <p>Benvenuto! Compila il modulo sottostante per registrarti come venditore.</p>
+                <form action="#" method="POST">
+                    <label for="nome">1. Qual è il tuo nome?</label>
+                    <input type="text" id="nome" name="nome" placeholder="Inserisci il tuo nome" required />
+
+                    <label for="cognome">2. Qual è il tuo cognome?</label>
+                    <input type="text" id="cognome" name="cognome" placeholder="Inserisci il tuo cognome" required />
+
+                    <label>3. Indirizzo di residenza:</label>
+                    <input type="text" id="via" name="via" placeholder="Via" required />
+                    <input type="text" id="comune" name="comune" placeholder="Comune" required />
+                    <input type="text" id="cap" name="cap" placeholder="CAP" required />
+
+                    <label for="email">4. Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Inserisci la tua email" required />
+
+                    <label for="password">5. Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Inserisci la tua password" required />
+
+                    <label for="descrizione">6. Breve descrizione:</label>
+                    <input type="text" id="descrizione" name="descrizione" placeholder="Inserisci una breve descrizione" required />
+
+                    <button type="submit">Registrati</button>
+                </form>
+            </div>
+
+            <div class="image-container">
+                <img src="img/macchina.png" alt="Immagine della macchina">
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Contatti</a>
+            <a href="#">Info</a>
+        </nav>
+    </footer>
+</body>
+</html>
+
