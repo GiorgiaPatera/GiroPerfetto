@@ -37,7 +37,7 @@ class DatabaseHelper{
     }
 
     public function getPosts($n=-1){
-        $query = "SELECT idarticolo, titoloarticolo, imgarticolo, anteprimaarticolo, dataarticolo, nome FROM articolo, autore WHERE autore=idautore ORDER BY dataarticolo DESC";
+        $query = "SELECT idarticolo, titoloarticolo, imgarticolo, anteprimaarticolo, dataarticolo, nome, prezzoarticolo FROM articolo, venditore WHERE autore=idautore ORDER BY dataarticolo DESC";
         if($n > 0){
             $query .= " LIMIT ?";
         }
@@ -52,7 +52,7 @@ class DatabaseHelper{
     }
 
     public function getPostById($id){
-        $query = "SELECT idarticolo, titoloarticolo, imgarticolo, testoarticolo, dataarticolo, nome FROM articolo, autore WHERE idarticolo=? AND autore=idautore";
+        $query = "SELECT idarticolo, titoloarticolo, imgarticolo, testoarticolo, dataarticolo, nome, prezzoarticolo FROM articolo, venditore WHERE idarticolo=? AND autore=idautore";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i',$id);
         $stmt->execute();
@@ -62,7 +62,7 @@ class DatabaseHelper{
     }
 
     public function getPostByCategory($idcategory){
-        $query = "SELECT idarticolo, titoloarticolo, imgarticolo, anteprimaarticolo, dataarticolo, nome FROM articolo, autore, articolo_ha_categoria WHERE categoria=? AND autore=idautore AND idarticolo=articolo";
+        $query = "SELECT idarticolo, titoloarticolo, imgarticolo, anteprimaarticolo, dataarticolo, nome, prezzoarticolo FROM articolo, venditore, articolo_ha_categoria WHERE categoria=? AND autore=idautore AND idarticolo=articolo";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i',$idcategory);
         $stmt->execute();
@@ -72,7 +72,7 @@ class DatabaseHelper{
     }
 
     public function getPostByIdAndAuthor($id, $idauthor){
-        $query = "SELECT idarticolo, anteprimaarticolo, titoloarticolo, imgarticolo, testoarticolo, dataarticolo, (SELECT GROUP_CONCAT(categoria) FROM articolo_ha_categoria WHERE articolo=idarticolo GROUP BY articolo) as categorie FROM articolo WHERE idarticolo=? AND autore=?";
+        $query = "SELECT idarticolo, anteprimaarticolo, titoloarticolo, imgarticolo, testoarticolo, dataarticolo, prezzoarticolo, (SELECT GROUP_CONCAT(categoria) FROM articolo_ha_categoria WHERE articolo=idarticolo GROUP BY articolo) as categorie FROM articolo WHERE idarticolo=? AND autore=?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ii',$id, $idauthor);
         $stmt->execute();
@@ -92,7 +92,7 @@ class DatabaseHelper{
     }
 
     public function insertArticle($titoloarticolo, $testoarticolo, $anteprimaarticolo, $dataarticolo, $imgarticolo, $autore){
-        $query = "INSERT INTO articolo (titoloarticolo, testoarticolo, anteprimaarticolo, dataarticolo, imgarticolo, autore) VALUES (?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO articolo (titoloarticolo, testoarticolo, anteprimaarticolo, dataarticolo, imgarticolo, autore, prezzoarticolo) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sssssi',$titoloarticolo, $testoarticolo, $anteprimaarticolo, $dataarticolo, $imgarticolo, $autore);
         $stmt->execute();
@@ -101,7 +101,7 @@ class DatabaseHelper{
     }
 
     public function updateArticleOfAuthor($idarticolo, $titoloarticolo, $testoarticolo, $anteprimaarticolo, $imgarticolo, $autore){
-        $query = "UPDATE articolo SET titoloarticolo = ?, testoarticolo = ?, anteprimaarticolo = ?, imgarticolo = ? WHERE idarticolo = ? AND autore = ?";
+        $query = "UPDATE articolo SET titoloarticolo = ?, testoarticolo = ?, anteprimaarticolo = ?, imgarticolo = ?, prezzoarticolo = ? WHERE idarticolo = ? AND autore = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ssssii',$titoloarticolo, $testoarticolo, $anteprimaarticolo, $imgarticolo, $idarticolo, $autore);
         
@@ -148,7 +148,7 @@ class DatabaseHelper{
     }
 
     public function checkLogin($username, $password){
-        $query = "SELECT idautore, username, nome FROM autore WHERE attivo=1 AND username = ? AND password = ?";
+        $query = "SELECT idautore, username, nome FROM venditore WHERE username = ? AND password = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$username, $password);
         $stmt->execute();
