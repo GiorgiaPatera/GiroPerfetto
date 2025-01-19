@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `GiroPerfettoDataBase`.`articolo` (
   `anteprimaarticolo` TINYTEXT NOT NULL,
   `imgarticolo` VARCHAR(100) NOT NULL,
   `autore` INT NOT NULL,
-  `prezzoarticolo` DECIMAL(4) NOT NULL,
+  `prezzoarticolo` DECIMAL(10, 2) NOT NULL,
   PRIMARY KEY (`idarticolo`),
   INDEX `fk_articolo_autore_idx` (`autore` ASC),
   CONSTRAINT `fk_articolo_autore`
