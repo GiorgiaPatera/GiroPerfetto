@@ -12,12 +12,12 @@
         <div><h1><?php echo $templateParams["nome"]; ?></h1></div>
         <nav>
             <!-- da modificare -->
-            <a <?php isActive("homeClient.php"); ?>href="homeClient.php">Home</a>
+            <a href="homeClient.php">Home</a>
             <a href="#">Offerte</a>
             <a href="#">Nuovo</a>
             <a href="#">Usato</a>
             <a href="#">Notifiche</a>
-            <a href="login.html">Accedi</a>
+            <a href="login.php">Accedi</a>
         </nav>
         
     </header>
