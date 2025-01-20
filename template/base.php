@@ -70,7 +70,9 @@
         <div>Contatti</div>
         <div class="subscribe">
             <input type="email" placeholder="Enter Email">
-            <button>Subscribe</button>
+            <!-- da mettere nel file css -->
+            <style> div button a {color: black;} </style>
+            <button><a href = "login.html">Accedi</a></button>
         </div>
     </footer>
     

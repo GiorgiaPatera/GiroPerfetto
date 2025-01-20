@@ -93,6 +93,7 @@ main {
     align-items: center;
     justify-content: center;
 }
+
 main h1 {
     color: #90caf9; 
 }
@@ -113,6 +114,7 @@ main h1 {
 .button:hover {
     background-color: #e0f7fa;
 }
+
 /* Footer */
 footer {
     background-color: #90caf9;
