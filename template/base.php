@@ -9,7 +9,7 @@
 <body>
 
     <header>
-        <div><h1>Informazioni</h1></div>
+        <div><h1><?php echo $templateParams["nome"]; ?></h1></div>
         <nav>
             <!-- da modificare -->
             <a <?php isActive("homeClient.php"); ?>href="homeClient.php">Home</a>
@@ -56,10 +56,13 @@
         <!-- da modificare -->
         <div class="content">
             <?php foreach($templateParams["articoli"] as $articolo): ?>
-                <div>
-                    <img src = "<?php echo UPLOAD_DIR.$articolo["imgarticolo"]; ?>" alt = "" />
-                    <div><?php echo $articolo["titoloarticolo"];?>, prezzo: € <?php echo $articolo["prezzoarticolo"] ?></div>
-                </div>
+                    <div><a href = #>
+
+                        <img src = "<?php echo UPLOAD_DIR.$articolo["imgarticolo"]; ?>" alt = "" />
+                
+                        <aside><?php echo $articolo["titoloarticolo"];?>, prezzo: € <?php echo $articolo["prezzoarticolo"] ?></aside>
+                        </a>
+                    </div>
             <?php endforeach; ?>
         </div>
     </div>
@@ -71,7 +74,10 @@
         <div class="subscribe">
             <input type="email" placeholder="Enter Email">
             <!-- da mettere nel file css -->
-            <style> div button a {color: black;} </style>
+            <style> div button a {color: black;}
+            .content div:hover {transition-duration: 1s; opacity: 0.6; width: 105%; height: 170px;}
+            .content div a aside {text-decoration: none; color: black;}
+            </style>
             <button><a href = "login.html">Accedi</a></button>
         </div>
     </footer>
