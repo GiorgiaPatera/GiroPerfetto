@@ -38,7 +38,8 @@
             <input type="email" placeholder="Enter Email">
             <!-- da mettere nel file css -->
             <style> div button a {color: black;}
-            .content div:hover {transition-duration: 1s; opacity: 0.6; width: 105%; height: 170px;}
+            .content div:hover {transition-duration: 0.5s; width: 105%; height: 170px;}
+            .content div {transition-duration: 0.5s; width: 100%; height: 150px;}
             .content div a aside {text-decoration: none; color: black;}
             </style>
             <button><a href = "login.html">Accedi</a></button>

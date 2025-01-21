@@ -21,7 +21,7 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         .container section:nth-child(1) {
-            width: 40%;
+            width: 45%;
         }
         .car {
             border: 1px solid #ccc;
@@ -32,21 +32,32 @@
             justify-content: space-between;
             align-items: center;
         }
+        .car p {
+            margin: 20px;
+        }
         .car-actions button {
             margin-left: 10px;
+            margin-top: 10px;
             padding: 5px 10px;
             border: none;
             border-radius: 3px;
             cursor: pointer;
         }
         .car-actions .edit {
-            background-color: #ffc107;
+            background-color: #90caf9;
             color: white;
+            transition: background-color 0.3s;
         }
         .car-actions .delete {
-            background-color: #dc3545;
+            background-color: darkgrey;
             color: white;
+            transition: background-color 0.3s;
         }
+
+        .car-actions .delete:hover {
+            background-color: rgb(120, 120, 120);
+        }
+
         /* Stile per la sezione Aggiungi articolo */
         .add-car-form {
             display: flex;
@@ -94,8 +105,11 @@
             transition: background-color 0.3s;
         }
 
-        .add-car-form .btn-submit:hover {
+        .add-car-form .btn-submit:hover, .car-actions .edit:hover {
             background-color: #42a5f5;
+        }
+        img {
+            margin: 20px;
         }
 
     </style>
@@ -113,18 +127,18 @@
         <h2>Macchine in vendita</h2>
         <?php foreach($templateParams["articoli"] as $articolo): ?>
         <div id="car-list">
-        <h3><?php echo $articolo["titoloarticolo"]; ?></h3>
+            <h3><?php echo $articolo["titoloarticolo"]; ?></h3>
             <div class="car" id=<?php echo $articolo["idarticolo"]; ?>>
                 <div><img src="<?php echo UPLOAD_DIR.$articolo["imgarticolo"]; ?>" alt="" /></div>
                 <p><?php echo $articolo["testoarticolo"]; ?></p>
-                <p><?php echo $articolo["prezzoarticolo"]; ?></p>
+                <p><?php echo "€"; echo $articolo["prezzoarticolo"]; ?></p>
                 <div class="car-actions">
                     <button class="edit" onclick="editCar(1)">Edit</button>
                     <button class="delete" onclick="deleteCar(1)">Delete</button>
                 </div>
             </div>
-        <?php endforeach; ?>
         </div>
+        <?php endforeach; ?>
     </section>
 
     <section>
