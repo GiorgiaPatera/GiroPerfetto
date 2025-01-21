@@ -82,7 +82,17 @@ class DatabaseHelper{
     }
 
     public function getPostByAuthorId($id){
-        $query = "SELECT idarticolo, titoloarticolo, imgarticolo FROM articolo WHERE venditore=?";
+        $query = "SELECT idarticolo, titoloarticolo, imgarticolo, testoarticolo, prezzoarticolo FROM articolo WHERE venditore=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getDescriptionByAuthorId($id){
+        $query = "SELECT brevedescrizione FROM venditore WHERE idvenditore=?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i',$id);
         $stmt->execute();
@@ -148,7 +158,7 @@ class DatabaseHelper{
     }
 
     public function checkLogin($username, $password){
-        $query = "SELECT idautore, username, nome FROM venditore WHERE username = ? AND password = ?";
+        $query = "SELECT idvenditore, username, nome FROM venditore WHERE username = ? AND password = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$username, $password);
         $stmt->execute();

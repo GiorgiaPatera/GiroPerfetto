@@ -33,7 +33,7 @@ switch($_GET["page"]){
         break;
     case "login":
         // da modificare
-        logout();
+        // logout();
         if(isset($_POST["username"]) && isset($_POST["password"])){
             $login_result = $dbh->checkLogin($_POST["username"], $_POST["password"]);
             if(count($login_result)==0){
@@ -47,10 +47,10 @@ switch($_GET["page"]){
         }
         
         if(isUserLoggedIn()){
-            $templateParams["titolo"] = "GiroPerfetto - Admin";
-            $templateParams["nome"] = "Informazioni";
+            $templateParams["titolo"] = "GiroPerfetto - Il mio profilo";
+            $templateParams["nome"] = "Il mio Profilo";
             $templateParams["contenuto"] = "login-home.php";
-            $templateParams["articoli"] = $dbh->getPostByAuthorId($_SESSION["idautore"]);
+            $templateParams["articoli"] = $dbh->getPostByAuthorId($_SESSION["idvenditore"]);
             if(isset($_GET["formmsg"])){
                 $templateParams["formmsg"] = $_GET["formmsg"];
             }

@@ -11,23 +11,23 @@ function getIdFromName($name){
 }
 
 function isUserLoggedIn(){
-    return !empty($_SESSION['idautore']);
+    return !empty($_SESSION['idvenditore']);
 }
 //con remember me
 function registerLoggedUser($user){
-    $_SESSION["idautore"] = $user["idautore"];
+    $_SESSION["idvenditore"] = $user["idvenditore"];
     $_SESSION["username"] = $user["username"];
     $_SESSION["nome"] = $user["nome"];
 }
 
 function logout(){
-    unset($_SESSION["idautore"]);
+    unset($_SESSION["idvenditore"]);
     unset($_SESSION["username"]);
     unset($_SESSION["nome"]);
 }
 
 function getEmptyArticle(){
-    return array("idarticolo" => "", "titoloarticolo" => "", "imgarticolo" => "", "testoarticolo" => "", "anteprimaarticolo" => "", "categorie" => array());
+    return array("idarticolo" => "", "titoloarticolo" => "", "imgarticolo" => "", "testoarticolo" => "", "categorie" => array());
 }
 
 function getAction($action){
