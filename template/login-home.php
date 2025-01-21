@@ -55,7 +55,7 @@
         }
 
         .car-actions .delete:hover {
-            background-color: rgb(120, 120, 120);
+            background-color: rgb(40, 40, 40);
         }
 
         /* Stile per la sezione Aggiungi articolo */
