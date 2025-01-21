@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="it">
 <head>
-    <title>Accedi</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="css/style.css" /> 
     <style>
          main {
             display: flex; 
@@ -115,49 +109,34 @@
         }
     </style>
 </head>
-<body>
-    <header>
-        <h1>Benvenuto</h1>
-    </header>
-    <main>
-        <div class="flex-container">
-        <div class="login-form">
-            <h1>Accedi</h1>
-            <form action="#" method="POST">
-            <?php if(isset($templateParams["errorelogin"])): ?>
-            <p><?php echo $templateParams["errorelogin"]; ?></p>
-            <?php endif; ?>
-                <label for="username">Email:</label>
-                <input type="email" id="username" name="username" placeholder="Inserisci la tua email" required />
 
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" placeholder="Inserisci la tua password" required />
+<div class="flex-container">
+<div class="login-form">
+    <h1>Accedi</h1>
+    <form action="#" method="POST">
+    <?php if(isset($templateParams["errorelogin"])): ?>
+    <p><?php echo $templateParams["errorelogin"]; ?></p>
+    <?php endif; ?>
+        <label for="username">Email:</label>
+        <input type="email" id="username" name="username" placeholder="Inserisci la tua email" required />
 
-                <div class="remember-me">
-                    <input type="checkbox" id="remember" name="remember">
-                    <label for="remember">Remember me</label>
-                </div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Inserisci la tua password" required />
 
-                <button type="submit" name="submit" class="login-btn">Accedi</button>
-            </form>
-
-            <div class="divider">OR</div>
-
-            <button class="register-btn" onclick="window.location.href='registration.html';" >Registrati</button>
+        <div class="remember-me">
+            <input type="checkbox" id="remember" name="remember">
+            <label for="remember">Remember me</label>
         </div>
-        <div class="rigth-div">
-            <img src="img/macchina.png" alt="immagineAuto">
-        </div>
-        </div>
-        
-    </main>
 
-    <footer>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Contatti</a>
-            <a href="#">Info</a>
-        </nav>
-    </footer>
-</body>
-</html>
+        <button type="submit" name="submit" class="login-btn">Accedi</button>
+    </form>
+
+    <div class="divider">OR</div>
+
+    <button class="register-btn" onclick="window.location.href='registration.html';" >Registrati</button>
+</div>
+<div class="rigth-div">
+    <img src="img/macchina.png" alt="immagineAuto">
+</div>
+</div>
+

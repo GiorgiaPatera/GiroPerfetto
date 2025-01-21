@@ -1,33 +1,11 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <title>GiroPerfetto</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-</head>
-<body>
-
-    <header>
-        <div><h1>Informazioni</h1></div>
-        <nav>
-            <a href="homeClient.html">Home</a>
-            <a href="#">Offerte</a>
-            <a href="#">Nuovo</a>
-            <a href="#">Usato</a>
-            <a href="#">Notifiche</a>
-            <a href="login.html">Accedi</a>
-        </nav>
-        
-    </header>
-
-    <div class="search-cart">
+<div class="search-cart">
         <input type="text" placeholder="Search">
         <div class="cart"><a href="#">🛒</a></div>
     </div>
-    
+
     <div class="container">
         <div class="sidebar">
+            <!-- da modificare -->
             <h2>Veicolo:</h2>
             <form>
                 <label for="autovettura"><input type="checkbox" id="autovettura" name="autovettura" /> Autovettura</label>
@@ -51,25 +29,16 @@
             </form>
         </div>
     
+        <!-- da modificare -->
         <div class="content">
-            <div>Auto 1</div>
-            <div>Auto 2</div>
-            <div>Auto 3</div>
-            <div>Auto 4</div>
-            <div>Auto 5</div>
-            <div>Auto 6</div>
+            <?php foreach($templateParams["articoli"] as $articolo): ?>
+                    <div><a href = #>
+
+                        <img src = "<?php echo UPLOAD_DIR.$articolo["imgarticolo"]; ?>" alt = "" />
+                
+                        <aside><?php echo $articolo["titoloarticolo"];?>, prezzo: € <?php echo $articolo["prezzoarticolo"] ?></aside>
+                        </a>
+                    </div>
+            <?php endforeach; ?>
         </div>
     </div>
-    
-    <footer class="footer">
-        <div>GiroPerfetto - La tua prossima auto, oggi!</div>
-        <div>Servizi: Vendita auto nuove | Vendita auto usate | Pronta consegna</div>
-        <div>Contatti</div>
-        <div class="subscribe">
-            <input type="email" placeholder="Enter Email">
-            <button>Subscribe</button>
-        </div>
-    </footer>
-    
-    </body>
-    </html>
