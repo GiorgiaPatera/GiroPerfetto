@@ -17,17 +17,17 @@ switch($_GET["page"]){
     case "offerte":
         $templateParams["nome"] = "Informazioni";
         $templateParams["contenuto"] = "lista-articoli.php";
-        $templateParams["articoli"] = $dbh->getPostByCategory("inOfferta");
+        $templateParams["articoli"] = $dbh->getPostByCategory(15);
         break;
     case "nuovo":
         $templateParams["nome"] = "Informazioni";
         $templateParams["contenuto"] = "lista-articoli.php";
-        $templateParams["articoli"] = $dbh->getPostByCategory(8);
+        $templateParams["articoli"] = $dbh->getPostByCategory(13);
         break;
     case "usato":
         $templateParams["nome"] = "Informazioni";
         $templateParams["contenuto"] = "lista-articoli.php";
-        $templateParams["articoli"] = $dbh->getPostByCategory("usato");
+        $templateParams["articoli"] = $dbh->getPostByCategory(14);
         break;
     case "notifiche":
         break;

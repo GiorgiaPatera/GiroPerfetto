@@ -37,7 +37,7 @@ class DatabaseHelper{
     }
 
     public function getPosts($n=-1){
-        $query = "SELECT idarticolo, titoloarticolo, imgarticolo, anteprimaarticolo, dataarticolo, nome, prezzoarticolo FROM articolo, venditore WHERE autore=idautore ORDER BY dataarticolo DESC";
+        $query = "SELECT idarticolo, titoloarticolo, imgarticolo, dataarticolo, nome, prezzoarticolo FROM articolo, venditore WHERE venditore=idvenditore ORDER BY dataarticolo DESC";
         if($n > 0){
             $query .= " LIMIT ?";
         }
@@ -52,7 +52,7 @@ class DatabaseHelper{
     }
 
     public function getPostById($id){
-        $query = "SELECT idarticolo, titoloarticolo, imgarticolo, testoarticolo, dataarticolo, nome, prezzoarticolo FROM articolo, venditore WHERE idarticolo=? AND autore=idautore";
+        $query = "SELECT idarticolo, titoloarticolo, imgarticolo, testoarticolo, dataarticolo, nome, prezzoarticolo FROM articolo, venditore WHERE idarticolo=? AND venditore=idvenditore";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i',$id);
         $stmt->execute();
@@ -62,7 +62,7 @@ class DatabaseHelper{
     }
 
     public function getPostByCategory($idcategory){
-        $query = "SELECT idarticolo, titoloarticolo, imgarticolo, anteprimaarticolo, dataarticolo, nome, prezzoarticolo FROM articolo, venditore, articolo_ha_categoria WHERE categoria=? AND autore=idautore AND idarticolo=articolo";
+        $query = "SELECT idarticolo, titoloarticolo, imgarticolo, dataarticolo, nome, prezzoarticolo FROM articolo, venditore, articolo_ha_categoria WHERE categoria=? AND venditore=idvenditore AND idarticolo=articolo";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i',$idcategory);
         $stmt->execute();
@@ -72,7 +72,7 @@ class DatabaseHelper{
     }
 
     public function getPostByIdAndAuthor($id, $idauthor){
-        $query = "SELECT idarticolo, anteprimaarticolo, titoloarticolo, imgarticolo, testoarticolo, dataarticolo, prezzoarticolo, (SELECT GROUP_CONCAT(categoria) FROM articolo_ha_categoria WHERE articolo=idarticolo GROUP BY articolo) as categorie FROM articolo WHERE idarticolo=? AND autore=?";
+        $query = "SELECT idarticolo, titoloarticolo, imgarticolo, testoarticolo, dataarticolo, nome, prezzoarticolo, (SELECT GROUP_CONCAT(categoria) FROM articolo_ha_categoria WHERE articolo=idarticolo GROUP BY articolo) as categorie FROM articolo WHERE idarticolo=? AND venditore=?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ii',$id, $idauthor);
         $stmt->execute();
@@ -82,7 +82,7 @@ class DatabaseHelper{
     }
 
     public function getPostByAuthorId($id){
-        $query = "SELECT idarticolo, titoloarticolo, imgarticolo FROM articolo WHERE autore=?";
+        $query = "SELECT idarticolo, titoloarticolo, imgarticolo FROM articolo WHERE venditore=?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i',$id);
         $stmt->execute();
