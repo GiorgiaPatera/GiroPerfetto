@@ -32,8 +32,7 @@ switch($_GET["page"]){
     case "notifiche":
         break;
     case "login":
-        // da modificare
-        // logout();
+        //logout();
         if(isset($_POST["username"]) && isset($_POST["password"])){
             $login_result = $dbh->checkLogin($_POST["username"], $_POST["password"]);
             if(count($login_result)==0){
@@ -41,8 +40,17 @@ switch($_GET["page"]){
                 $templateParams["errorelogin"] = "Errore! Controllare username o password!";
             }
             else{
-                // se spuntato il remember me 
+                $username = $_POST["username"];
+                $password = $_POST["password"];
+                $remember = isset($_POST["remember"]);
                 registerLoggedUser($login_result[0]);
+                if($remember){
+                    setcookie('username', $username, time() + (30 * 24 * 60 * 60), "/"); //un mese
+                    setcookie('remember', 'true', time() + (30 * 24 * 60 * 60), "/");
+                }else{
+                    setcookie('username', '', time() - 3600, "/");
+                    setcookie('remember', '', time() - 3600, "/");
+                }
             }
         }
         
@@ -58,7 +66,7 @@ switch($_GET["page"]){
         else{
             $templateParams["titolo"] = "GiroPerfetto - Login";
             $templateParams["nome"] = "Benvenuto";
-            $templateParams["contenuto"] = "baselogin.php";
+            $templateParams["contenuto"] = "base-login.php";
         }
         break;
     default:

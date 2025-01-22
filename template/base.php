@@ -42,7 +42,7 @@
             .content div {transition-duration: 0.5s; width: 100%; height: 150px;}
             .content div a aside {text-decoration: none; color: black;}
             </style>
-            <button><a href = "login.html">Accedi</a></button>
+            <button><a href = "index.php?page=login">Accedi</a></button>
         </div>
     </footer>
     <?php

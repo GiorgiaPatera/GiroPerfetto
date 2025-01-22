@@ -13,7 +13,7 @@ function getIdFromName($name){
 function isUserLoggedIn(){
     return !empty($_SESSION['idvenditore']);
 }
-//con remember me
+
 function registerLoggedUser($user){
     $_SESSION["idvenditore"] = $user["idvenditore"];
     $_SESSION["username"] = $user["username"];

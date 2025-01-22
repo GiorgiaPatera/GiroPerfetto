@@ -124,7 +124,7 @@
         <input type="password" id="password" name="password" placeholder="Inserisci la tua password" required />
 
         <div class="remember-me">
-            <input type="checkbox" id="remember" name="remember">
+            <input type="checkbox" id="remember" name="remember"/>
             <label for="remember">Remember me</label>
         </div>
 
@@ -136,7 +136,7 @@
     <button class="register-btn" onclick="window.location.href='registration.html';" >Registrati</button>
 </div>
 <div class="rigth-div">
-    <img src="img/macchina.png" alt="immagineAuto">
+    <img src="img/macchina.png" alt="immagineAuto"/>
 </div>
 </div>
 

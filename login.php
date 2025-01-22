@@ -7,6 +7,6 @@ $templateParams["nome"] = "Benvenuto";
 $templateParams["js"] = array("js/login.js");
 
 
-require 'template/baselogin.php';
+require 'template/base-login.php';
 
 ?>
