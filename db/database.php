@@ -101,6 +101,15 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function insertAuthor($username, $password, $nome, $brevedescrizione, $via, $comune, $cap){
+        $query = "INSERT INTO venditore (username, password, nome, brevedescrizione, via, comune, cap) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ssssssd',$username, $password, $nome, $brevedescrizione, $via, $comune, $cap);
+        $stmt->execute();
+        
+        return $stmt->insert_id;
+    }
+
     public function insertArticle($titoloarticolo, $testoarticolo, $anteprimaarticolo, $dataarticolo, $imgarticolo, $autore){
         $query = "INSERT INTO articolo (titoloarticolo, testoarticolo, anteprimaarticolo, dataarticolo, imgarticolo, autore, prezzoarticolo) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);

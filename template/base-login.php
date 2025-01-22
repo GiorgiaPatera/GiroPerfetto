@@ -133,7 +133,7 @@
 
     <div class="divider">OR</div>
 
-    <button class="register-btn" onclick="window.location.href='registration.html';" >Registrati</button>
+    <button class="register-btn" onclick="window.location.href='index.php?page=registration';" >Registrati</button>
 </div>
 <div class="rigth-div">
     <img src="img/macchina.png" alt="immagineAuto"/>

@@ -31,6 +31,15 @@ switch($_GET["page"]){
         break;
     case "notifiche":
         break;
+    case 'registration':
+        $templateParams["titolo"] = "GiroPerfetto - Registrazione";
+        $templateParams["nome"] = "Benvenuto";
+        $templateParams["contenuto"] = "base-registrazione.php";
+        if(isset($_POST["nome"]) && isset($_POST["via"]) && isset($_POST["comune"]) && isset($_POST["cap"]) && isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["brevedescrizione"])){
+            $dbh->insertAuthor($_POST["username"], $_POST["password"], $_POST["nome"], $_POST["brevedescrizione"], $_POST["via"], $_POST["comune"],$_POST["cap"] );
+            header("location: index.php?page=login");
+        }
+        break;
     case "login":
         //logout();
         if(isset($_POST["username"]) && isset($_POST["password"])){
