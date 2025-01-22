@@ -68,6 +68,7 @@ switch($_GET["page"]){
             $templateParams["nome"] = "Il mio Profilo";
             $templateParams["contenuto"] = "login-home.php";
             $templateParams["articoli"] = $dbh->getPostByAuthorId($_SESSION["idvenditore"]);
+            $templateParams["categorie"] = $dbh->getCategories();
             if(isset($_GET["formmsg"])){
                 $templateParams["formmsg"] = $_GET["formmsg"];
             }

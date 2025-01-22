@@ -110,10 +110,10 @@ class DatabaseHelper{
         return $stmt->insert_id;
     }
 
-    public function insertArticle($titoloarticolo, $testoarticolo, $anteprimaarticolo, $dataarticolo, $imgarticolo, $autore){
-        $query = "INSERT INTO articolo (titoloarticolo, testoarticolo, anteprimaarticolo, dataarticolo, imgarticolo, autore, prezzoarticolo) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    public function insertArticle($titoloarticolo, $testoarticolo, $dataarticolo, $imgarticolo, $venditore, $prezzoarticolo){
+        $query = "INSERT INTO articolo (titoloarticolo, testoarticolo, dataarticolo, imgarticolo, venditore, prezzoarticolo) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sssssi',$titoloarticolo, $testoarticolo, $anteprimaarticolo, $dataarticolo, $imgarticolo, $autore);
+        $stmt->bind_param('sssssd',$titoloarticolo, $testoarticolo, $dataarticolo, $imgarticolo, $venditore, $prezzoarticolo);
         $stmt->execute();
         
         return $stmt->insert_id;
