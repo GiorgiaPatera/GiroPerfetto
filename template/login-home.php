@@ -133,8 +133,8 @@
                 <p><?php echo $articolo["testoarticolo"]; ?></p>
                 <p><?php echo "€"; echo $articolo["prezzoarticolo"]; ?></p>
                 <div class="car-actions">
-                    <button class="edit" onclick="editCar(1)">Edit</button>
-                    <button class="delete" onclick="deleteCar(1)">Delete</button>
+                    <button class="edit"><a href="processa-articolo.php?action=2">Modifica</a></button>
+                    <button class="delete"><a href="processa-articolo.php?action=3">Cancella</a></button>
                 </div>
             </div>
         </div>
@@ -143,7 +143,7 @@
 
     <section>
         <h2>Aggiungi un articolo:</h2>
-        <form id="add-car-form" class="add-car-form" onsubmit="addCar()">
+        <form action="processa-articolo.php?action=1" method="POST" id="add-car-form" class="add-car-form">
             <div class="form-group">
                 <label for="titoloarticolo">Titolo articolo:</label>
                 <input type="text" id="titoloarticolo" name="titoloarticolo" placeholder="Inserisci il titolo" required />
@@ -165,52 +165,7 @@
                 <input type="checkbox" id="<?php echo $categoria["idcategoria"]; ?>" name="categoria_<?php echo $categoria["idcategoria"]; ?>" /><label for="<?php echo $categoria["idcategoria"]; ?>"><?php echo $categoria["nomecategoria"] ?></label>
                 <?php endforeach; ?>
             </div>
-            <button type="submit" class="btn-submit" name="submit">Aggiungi Articolo</button>
+            <button type="submit" class="btn-submit" name="submit">Aggiungi articolo</button>
         </form>
     </section>
 </div>
-
-<script>
-    function editCar(id) {
-        //funzione per modificare articolo
-    }
-
-    function deleteCar(id) {
-        //funzione per eliminare articolo
-    }
-
-    function addCar() {
-        
-        $titoloarticolo = htmlspecialchars($_POST["titoloarticolo"]);
-        $testoarticolo = htmlspecialchars($_POST["testoarticolo"]);
-        $prezzoarticolo = $_POST["prezzoarticolo"];
-        $dataarticolo = date("Y-m-d");
-        $venditore = $_SESSION["idvenditore"];
-
-        // $categorie = $dbh->getCategories();
-        // $categorie_inserite = array();
-        // foreach($categorie as $categoria){
-        //     if(isset($_POST["categoria_".$categoria["idcategoria"]])){
-        //         array_push($categorie_inserite, $categoria["idcategoria"]);
-        //     }
-        // }
-
-        list($result, $msg) = uploadImage(UPLOAD_DIR, $_POST["imgarticolo"]);
-        if($result != 0){
-            $imgarticolo = $msg;
-            $idarticolo = $dbh->insertArticle($titoloarticolo, $testoarticolo, $dataarticolo, $imgarticolo, $venditore, $prezzoarticolo);
-            if($idarticolo != false){
-                // foreach($categorie_inserite as $categoria){
-                //     $ris = $dbh->insertCategoryOfArticle($idarticolo, $categoria);
-                // }
-                $msg = "Inserimento completato correttamente";
-            }else{
-                $msg = "Errore in inserimento";
-            }
-        }
-        header("location: index.php?page=login");
-    }
-</script>
-
-
-</html>
