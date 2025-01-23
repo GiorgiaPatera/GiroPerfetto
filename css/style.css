@@ -55,6 +55,11 @@ nav a {
     color: white;
     font-size: 1em;
 }
+
+nav a:hover {
+    color: grey;
+}
+
 main {
     flex: 1;
     display: flex;
