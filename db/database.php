@@ -127,10 +127,10 @@ class DatabaseHelper{
         return $stmt->execute();
     }
 
-    public function deleteArticleOfAuthor($idarticolo, $autore){
-        $query = "DELETE FROM articolo WHERE idarticolo = ? AND autore = ?";
+    public function deleteArticleOfAuthor($idarticolo, $venditore){
+        $query = "DELETE FROM articolo WHERE idarticolo = ? AND venditore = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ii',$idarticolo, $autore);
+        $stmt->bind_param('ii',$idarticolo, $venditore);
         $stmt->execute();
         var_dump($stmt->error);
         return true;

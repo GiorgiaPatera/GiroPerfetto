@@ -78,12 +78,12 @@ if($_POST["action"]==3){
     //cancello
     echo "entro";
     $idarticolo = $_POST["idarticolo"];
-    $autore =  $_SESSION["idautore"];
+    $venditore =  $_SESSION["idvenditore"];
     $dbh->deleteCategoriesOfArticle($idarticolo);
-    $dbh->deleteArticleOfAuthor($idarticolo, $autore);
+    $dbh->deleteArticleOfAuthor($idarticolo, $venditore);
     
     $msg = "Cancellazione completata correttamente!";
-    header("location: index.php?formmsg=".$msg);
+    header("location: index.php?page=login");
 }
 
 ?>

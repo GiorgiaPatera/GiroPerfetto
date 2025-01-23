@@ -61,12 +61,14 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
+    margin: 0 ;
+    width: 100%;
 }
 
 .container {
     display: flex;
-    padding: 20px;
+    padding: 10px;
+    width: 80%;
 }
 
 .sidebar {
