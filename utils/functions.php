@@ -27,7 +27,7 @@ function logout(){
 }
 
 function getEmptyArticle(){
-    return array("idarticolo" => "", "titoloarticolo" => "", "imgarticolo" => "", "testoarticolo" => "", "categorie" => array());
+    return array("idarticolo" => "", "titoloarticolo" => "", "testoarticolo" => "", "prezzoarticolo" => "", "imgarticolo" => "", "categorie" => array());
 }
 
 function getAction($action){

@@ -35,7 +35,7 @@
         .car p {
             margin: 20px;
         }
-        .car-actions button {
+        .car-actions button, .insert {
             margin-left: 10px;
             margin-top: 10px;
             padding: 5px 10px;
@@ -43,7 +43,7 @@
             border-radius: 3px;
             cursor: pointer;
         }
-        .car-actions .edit {
+        .car-actions .edit, .insert {
             background-color: #90caf9;
             color: white;
             transition: background-color 0.3s;
@@ -57,59 +57,14 @@
         .car-actions .delete:hover {
             background-color: rgb(92, 92, 92);
         }
-
-        /* Stile per la sezione Aggiungi articolo */
-        .add-car-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            background: #f4f4f9;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .add-car-form .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .add-car-form label {
-            font-weight: bold;
-            margin-bottom: 5px;
-            font-size: 14px;
-        }
-
-        .add-car-form input,
-        .add-car-form textarea {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-
-        .add-car-form textarea {
-            resize: none;
-            height: 80px;
-        }
-
-        .add-car-form .btn-submit {
-            padding: 10px 20px;
-            background-color: #90caf9;
-            color: white;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            transition: background-color 0.3s;
-        }
-
-        .add-car-form .btn-submit:hover, .car-actions .edit:hover {
+        .car-actions .edit:hover, .insert:hover {
             background-color: #42a5f5;
         }
         img {
             margin: 20px;
+        }
+        a {
+            text-decoration: none;
         }
 
     </style>
@@ -120,7 +75,7 @@
     <section>
         <h2>Nome e Cognome: <?php echo $_SESSION["nome"]; ?></h2>
         <p>Email: <?php echo $_SESSION["username"]; ?></p>
-        <p>Breve descrizzione: <?php echo "ciao"; ?></p>
+        <p>Breve descrizzione: <?php echo implode(',', $dbh->getDescriptionByAuthorId($_SESSION["idvenditore"])[0]); ?></p>
     </section>
 
     <section>
@@ -133,39 +88,12 @@
                 <p><?php echo $articolo["testoarticolo"]; ?></p>
                 <p><?php echo "€"; echo $articolo["prezzoarticolo"]; ?></p>
                 <div class="car-actions">
-                    <button class="edit"><a href="processa-articolo.php?action=2">Modifica</a></button>
-                    <button class="delete"><a href="processa-articolo.php?action=3">Cancella</a></button>
+                    <button class="edit"><a href="gestisci-articolo.php?action=2&id=<?php echo $articolo["idarticolo"]; ?>">Modifica</a></button>
+                    <button class="delete"><a href="gestisci-articolo.php?action=3&id=<?php echo $articolo["idarticolo"]; ?>">Cancella</a></button>
                 </div>
             </div>
         </div>
         <?php endforeach; ?>
-    </section>
-
-    <section>
-        <h2>Aggiungi un articolo:</h2>
-        <form action="processa-articolo.php?action=1" method="POST" id="add-car-form" class="add-car-form">
-            <div class="form-group">
-                <label for="titoloarticolo">Titolo articolo:</label>
-                <input type="text" id="titoloarticolo" name="titoloarticolo" placeholder="Inserisci il titolo" required />
-            </div>
-            <div class="form-group">
-                <label for="testoarticolo">Testo articolo:</label>
-                <textarea id="testoarticolo" name="testoarticolo" placeholder="Inserisci il testo dell'articolo" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="prezzoarticolo">Prezzo (€):</label>
-                <input type="number" id="prezzoarticolo" name="prezzoarticolo" placeholder="Inserisci il prezzo" required />
-            </div>
-            <div class="form-group">
-                <label for="imgarticolo">Carica un'immagine:</label>
-                <input type="file" id="imgarticolo" name="imgarticolo"/>
-            </div>
-            <div>
-                <?php foreach($templateParams["categorie"] as $categoria): ?>
-                <input type="checkbox" id="<?php echo $categoria["idcategoria"]; ?>" name="categoria_<?php echo $categoria["idcategoria"]; ?>" /><label for="<?php echo $categoria["idcategoria"]; ?>"><?php echo $categoria["nomecategoria"] ?></label>
-                <?php endforeach; ?>
-            </div>
-            <button type="submit" class="btn-submit" name="submit">Aggiungi articolo</button>
-        </form>
+        <button class="insert"><a href="gestisci-articolo.php?action=1">Aggiungi Articolo</a></button>
     </section>
 </div>

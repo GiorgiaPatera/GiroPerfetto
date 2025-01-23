@@ -72,7 +72,7 @@ class DatabaseHelper{
     }
 
     public function getPostByIdAndAuthor($id, $idauthor){
-        $query = "SELECT idarticolo, titoloarticolo, imgarticolo, testoarticolo, dataarticolo, nome, prezzoarticolo, (SELECT GROUP_CONCAT(categoria) FROM articolo_ha_categoria WHERE articolo=idarticolo GROUP BY articolo) as categorie FROM articolo WHERE idarticolo=? AND venditore=?";
+        $query = "SELECT idarticolo, titoloarticolo, imgarticolo, testoarticolo, dataarticolo, prezzoarticolo, (SELECT GROUP_CONCAT(categoria) FROM articolo_ha_categoria WHERE articolo=idarticolo GROUP BY articolo) as categorie FROM articolo WHERE idarticolo=? AND venditore=?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ii',$id, $idauthor);
         $stmt->execute();
@@ -113,7 +113,7 @@ class DatabaseHelper{
     public function insertArticle($titoloarticolo, $testoarticolo, $dataarticolo, $imgarticolo, $venditore, $prezzoarticolo){
         $query = "INSERT INTO articolo (titoloarticolo, testoarticolo, dataarticolo, imgarticolo, venditore, prezzoarticolo) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sssssd',$titoloarticolo, $testoarticolo, $dataarticolo, $imgarticolo, $venditore, $prezzoarticolo);
+        $stmt->bind_param('ssssid',$titoloarticolo, $testoarticolo, $dataarticolo, $imgarticolo, $venditore, $prezzoarticolo);
         $stmt->execute();
         
         return $stmt->insert_id;
