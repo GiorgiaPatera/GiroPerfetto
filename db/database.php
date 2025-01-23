@@ -119,10 +119,10 @@ class DatabaseHelper{
         return $stmt->insert_id;
     }
 
-    public function updateArticleOfAuthor($idarticolo, $titoloarticolo, $testoarticolo, $anteprimaarticolo, $imgarticolo, $autore){
-        $query = "UPDATE articolo SET titoloarticolo = ?, testoarticolo = ?, anteprimaarticolo = ?, imgarticolo = ?, prezzoarticolo = ? WHERE idarticolo = ? AND autore = ?";
+    public function updateArticleOfAuthor($idarticolo, $titoloarticolo, $testoarticolo, $dataarticolo, $imgarticolo, $venditore, $prezzoarticolo){
+        $query = "UPDATE articolo SET titoloarticolo = ?, testoarticolo = ?, dataarticolo = ?, imgarticolo = ?, prezzoarticolo = ? WHERE idarticolo = ? AND venditore = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ssssii',$titoloarticolo, $testoarticolo, $anteprimaarticolo, $imgarticolo, $idarticolo, $autore);
+        $stmt->bind_param('ssssdii',$titoloarticolo, $testoarticolo, $datarticolo, $imgarticolo, $prezzoarticolo, $idarticolo, $venditore);
         
         return $stmt->execute();
     }

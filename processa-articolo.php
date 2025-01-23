@@ -35,12 +35,12 @@ if($_POST["action"]==2){
     $idarticolo = htmlspecialchars($_POST["idarticolo"]);
     $titoloarticolo = htmlspecialchars($_POST["titoloarticolo"]);
     $testoarticolo = htmlspecialchars($_POST["testoarticolo"]);
-    $anteprimaarticolo = htmlspecialchars($_POST["anteprimaarticolo"]);
-    $anteprimaarticolo = $_POST["anteprimaarticolo"];
-    $autore = $_SESSION["idautore"];
+    $dataarticolo = date("Y-m-d");
+    $venditore = $_SESSION["idvenditore"];
+    $prezzoarticolo = htmlspecialchars($_POST["prezzoarticolo"]);
 
-    if(isset($_FILES["imgarticolo"]) && strlen($_FILES["imgarticolo"]["name"])>0){
-        list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["imgarticolo"]);
+    if(isset($_POST["imgarticolo"])){
+        list($result, $msg) = uploadImage(UPLOAD_DIR, $_POST["imgarticolo"]);
         if($result == 0){
             header("location: index.php?formmsg=".$msg);
         }
@@ -50,7 +50,8 @@ if($_POST["action"]==2){
     else{
         $imgarticolo = $_POST["oldimg"];
     }
-    $dbh->updateArticleOfAuthor($idarticolo, $titoloarticolo, $testoarticolo, $anteprimaarticolo, $imgarticolo, $autore);
+
+    $dbh->updateArticleOfAuthor($idarticolo, $titoloarticolo, $testoarticolo, $dataarticolo, $imgarticolo, $venditore, $prezzoarticolo);
 
     $categorie = $dbh->getCategories();
     $categorie_inserite = array();
@@ -70,8 +71,7 @@ if($_POST["action"]==2){
         $ris = $dbh->insertCategoryOfArticle($idarticolo, $categoria);
     }
 
-    $msg = "Modifica completata correttamente!";
-    header("location: index.php?formmsg=".$msg);
+    header("location: index.php?page=login");
 }
 
 if($_POST["action"]==3){
