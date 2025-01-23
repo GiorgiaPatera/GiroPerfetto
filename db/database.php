@@ -11,7 +11,7 @@ class DatabaseHelper{
     }
 
     public function getRandomPosts($n){
-        $stmt = $this->db->prepare("SELECT idarticolo, titoloarticolo, imgarticolo FROM articolo ORDER BY RAND() LIMIT ?");
+        $stmt = $this->db->prepare("SELECT idarticolo, titoloarticolo, imgarticolo, prezzoarticolo FROM articolo ORDER BY RAND() LIMIT ?");
         $stmt->bind_param('i',$n);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -95,6 +95,15 @@ class DatabaseHelper{
         $query = "SELECT brevedescrizione FROM venditore WHERE idvenditore=?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i',$id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    public function getAuthorbyidArticle($idarticolo){
+        $query = "SELECT nome, brevedescrizione, username FROM venditore,articolo WHERE venditore=idvenditore AND idarticolo=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$idarticolo);
         $stmt->execute();
         $result = $stmt->get_result();
 

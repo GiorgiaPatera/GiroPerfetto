@@ -53,7 +53,7 @@
                 $templateParams["articoli"] = array_merge($templateParams["articoli"], $articoli);
             }
         } else {
-            $templateParams["articoli"] = $dbh->getPosts();
+            //$templateParams["articoli"] = $dbh->getPosts();
         }
     ?>
 
@@ -62,7 +62,7 @@
     <?php if (!empty($templateParams["articoli"])): ?>
         <?php foreach ($templateParams["articoli"] as $articolo): ?>
             <div>
-                <a href="article.php">
+                <a href="article.php?id=<?php echo $articolo["idarticolo"];?>">
                     <img src="<?php echo UPLOAD_DIR . $articolo["imgarticolo"]; ?>" alt="" />
                     <aside><?php echo $articolo["titoloarticolo"]; ?>, prezzo: € <?php echo $articolo["prezzoarticolo"]; ?></aside>
                 </a>
