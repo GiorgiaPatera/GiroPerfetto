@@ -47,6 +47,38 @@ function getAction($action){
     return $result;
 }
 
+function getCategoryFromPage($page){
+    switch($page){
+        case "offerte":
+            $category = 15;
+            break;
+        case "nuovo":
+            $category = 13;
+            break;
+        case "usato":
+            $category = 14;
+            break;
+        default:
+            $category = null;
+            break;
+    }
+    return $category;
+}
+
+function getPostBySecondaryCategories($idpost, $categories, $i, $categoriesFromPost){
+    foreach ($categories as $idcat) {
+        if (in_array($idcat, $categoriesFromPost)) {
+            //non entra qui
+            $i = $i + 1;
+        }
+    }
+    if ($i > 0) {
+        return true;
+    }else{
+        return false;
+    }
+}
+
 
 function uploadImage($path, $image){
     $imageName = basename($image["name"]);

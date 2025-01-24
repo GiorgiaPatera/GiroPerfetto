@@ -48,10 +48,37 @@
         if (isset($_POST['categorie']) && is_array($_POST['categorie'])) {
             $categorieSelezionate = $_POST['categorie'];
             $templateParams["articoli"] = [];
-            foreach ($categorieSelezionate as $idCategoria) {
-                $articoli = $dbh->getPostByCategory($idCategoria);
-                $templateParams["articoli"] = array_merge($templateParams["articoli"], $articoli);
+            if(getCategoryFromPage($_GET["page"]) != null){
+                $articoli = $dbh->getPostByCategory(getCategoryFromPage($_GET["page"]));
+                foreach ($articoli as $articolo) {
+                    //riuscire a stampare categories from post per verificare
+                    if (getPostBySecondaryCategories($articolo["idarticolo"], $categorieSelezionate, 0, $dbh->getCategoriesFromPost($articolo["idarticolo"]))) {
+                        // non entra qui
+                        $templateParams["articoli"] = array_push($templateParams["articoli"], $articolo);
+                    }
+                }
+            }else{
+                foreach ($categorieSelezionate as $idCategoria) {
+                    // qui da gestire meglio il filtro (se una macchina ha due filtri selezionati allora esce due volte (sarebbe da fare funzione che controlla se la macchina non ce già), se metto moto bianca mi escono le auto bianche (sarebbe da fare macro categoria come usate e nuove))
+                    $articoli = $dbh->getPostByCategory($idCategoria);
+                    $templateParams["articoli"] = array_merge($templateParams["articoli"], $articoli);
+                }
             }
+
+
+
+            // foreach ($categorieSelezionate as $idCategoria) {
+            //     $i = 0;
+            //     foreach($articoli as $articolo){
+            //         if(!in_array($idCategoria, $dbh->getCategoriesFromPost($articolo["idarticolo"]))){
+            //             unset($articoli[$i]);
+            //         }
+            //         $i = $i + 1;
+            //     }
+            //     //$articoli = $dbh->getPostByCategory($idCategoria);
+            //     // $templateParams["articoli"] = array_merge($templateParams["articoli"], $articoli);
+            // }
+            //$templateParams["articoli"] = array_merge($templateParams["articoli"], $articoli);
         } else {
             //$templateParams["articoli"] = $dbh->getPosts();
         }

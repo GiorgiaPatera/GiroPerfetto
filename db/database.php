@@ -36,6 +36,15 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getCategoriesFromPost($idarticolo){
+        $stmt = $this->db->prepare("SELECT categoria FROM articolo_ha_categoria WHERE articolo=?");
+        $stmt->bind_param('i',$idarticolo);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getPosts($n=-1){
         $query = "SELECT idarticolo, titoloarticolo, imgarticolo, dataarticolo, nome, prezzoarticolo FROM articolo, venditore WHERE venditore=idvenditore ORDER BY dataarticolo DESC";
         if($n > 0){
