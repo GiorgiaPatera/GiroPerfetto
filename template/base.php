@@ -33,7 +33,7 @@
     <footer class="footer">
         <div>GiroPerfetto - La tua prossima auto, oggi!</div>
         <div>Servizi: Vendita auto nuove | Vendita auto usate | Pronta consegna</div>
-        <div>Contatti</div>
+        <div><img src="img/GiroPerfettoLogo.png" alt=""/></div>
         <div class="subscribe">
             <input type="email" placeholder="Enter Email">
             <!-- da mettere nel file css -->
