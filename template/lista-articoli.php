@@ -2,7 +2,7 @@
 
 <div class="search-cart">
         <input type="text" placeholder="Search">
-        <div class="cart"><a href="#">🛒</a></div>
+        <div class="cart"><a href="carrello.php">🛒</a></div>
     </div>
 
     <div class="container">

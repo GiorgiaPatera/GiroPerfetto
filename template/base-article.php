@@ -41,7 +41,7 @@
             <p><?php echo $venditore["username"]; ?></p>
             <div class="add-to-cart">
                 <button>Add to Cart</button>
-                <button><a href="">Aggiungi al carrello</a></button>
+                <button><a href="carrello.php?id=<?php echo $articolo["idarticolo"] ?>">Aggiungi al carrello</a></button>
             </div>
             <p><b>Lo vuoi? Affrettati, sta per finire!</b></p>
         </div>
