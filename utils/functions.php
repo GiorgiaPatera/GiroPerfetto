@@ -79,6 +79,27 @@ function getPostBySecondaryCategories($idpost, $categories, $i, $categoriesFromP
     }
 }
 
+function getArticlesByCategory ($articoli, $idcategoria, $dbh) {
+    $articolifinali = [];
+    $categoriearticolo = [];
+    $categoriafinale = [];
+    foreach ($articoli as $articolo) {
+        $categoriearticolo = $dbh->getCategoriesFromPost($articolo["idarticolo"]);
+        
+        foreach ($categoriearticolo as $categoria) {
+            array_push($categoriafinale, $categoria["categoria"]);
+        }
+        
+        if (in_array($idcategoria, $categoriafinale) && !in_array($articolo, $articolifinali)) {
+            array_push($articolifinali, $articolo);
+        }
+        $categoriafinale = [];
+        $categoriearticolo = [];
+    }
+
+    return $articolifinali;
+}
+
 
 function uploadImage($path, $image){
     $imageName = basename($image["name"]);
