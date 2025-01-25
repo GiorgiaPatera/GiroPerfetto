@@ -35,7 +35,7 @@
         .car p {
             margin: 20px;
         }
-        .car-actions button, .insert {
+        .car-actions button, .insert, .container > section > button {
             margin-left: 10px;
             margin-top: 10px;
             padding: 5px 10px;
@@ -43,7 +43,7 @@
             border-radius: 3px;
             cursor: pointer;
         }
-        .car-actions .edit, .insert {
+        .car-actions .edit, .insert, .container > section > button {
             background-color: #90caf9;
             color: white;
             transition: background-color 0.3s;
@@ -57,7 +57,7 @@
         .car-actions .delete:hover {
             background-color: rgb(92, 92, 92);
         }
-        .car-actions .edit:hover, .insert:hover {
+        .car-actions .edit:hover, .insert:hover, .container > section > button:hover {
             background-color: #42a5f5;
         }
         img {
@@ -76,6 +76,7 @@
         <h2>Nome e Cognome: <?php echo $_SESSION["nome"]; ?></h2>
         <p>Email: <?php echo $_SESSION["username"]; ?></p>
         <p>Breve descrizzione: <?php echo implode(',', $dbh->getDescriptionByAuthorId($_SESSION["idvenditore"])[0]); ?></p>
+        <button>Disconnettiti</button>
     </section>
 
     <section>
