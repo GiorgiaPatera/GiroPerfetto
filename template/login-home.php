@@ -76,7 +76,7 @@
         <h2>Nome e Cognome: <?php echo $_SESSION["nome"]; ?></h2>
         <p>Email: <?php echo $_SESSION["username"]; ?></p>
         <p>Breve descrizzione: <?php echo implode(',', $dbh->getDescriptionByAuthorId($_SESSION["idvenditore"])[0]); ?></p>
-        <button>Disconnettiti</button>
+        <button><a href="logout.php">Disconnettiti</a></button>
     </section>
 
     <section>
