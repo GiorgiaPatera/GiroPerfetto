@@ -1,9 +1,12 @@
 
 
 <div class="search-cart">
-        <input type="text" placeholder="Search" />
-        <div class="cart"><a href="carrello.php">🛒</a></div>
-    </div>
+    <form action="cerca-articoli.php" method="post">
+        <input type="text" placeholder="Search" id="cerca" name="cerca" />
+        <button type="submit">Cerca</button>
+    </form>
+    <div class="cart"><a href="carrello.php">🛒</a></div>
+</div>
 
     <div class="container">
     <div class="sidebar">
