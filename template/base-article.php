@@ -40,7 +40,7 @@
             <p><?php echo $venditore["brevedescrizione"]; ?></p>
             <p><?php echo $venditore["username"]; ?></p>
             <div class="add-to-cart">
-                <button>Add to Cart</button>
+                <button><a href="pagamento.php?id=<?php echo $articolo["idarticolo"] ?>">Procedi al pagamento</a></button>
                 <button><a href="carrello.php?id=<?php echo $articolo["idarticolo"] ?>">Aggiungi al carrello</a></button>
             </div>
             <p><b>Lo vuoi? Affrettati, sta per finire!</b></p>

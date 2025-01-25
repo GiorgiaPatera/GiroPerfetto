@@ -9,7 +9,7 @@
                         <p><?php echo $articolo["testoarticolo"]; ?></p>
                         <p><?php echo "€"; echo $articolo["prezzoarticolo"]; ?></p>
                         <div class="car-actions">
-                            <button class="buy"><a href="">Compra</a></button>
+                            <button class="buy"><a href="pagamento.php?id=<?php echo $articolo["idarticolo"] ?>">Procedi al pagamento</a></button>
                             <button class="delete"><a href="elimina-dal-carrello.php?id=<?php echo $articolo["idarticolo"]; ?>">Cancella</a></button>
                         </div>
                     </div>

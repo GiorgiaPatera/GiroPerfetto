@@ -193,5 +193,13 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+    public function deleteArticle($idarticolo){
+        $query = "DELETE FROM articolo WHERE idarticolo = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$idarticolo);
+        $stmt->execute();
+        var_dump($stmt->error);
+        return true;
+    }
 }
 ?>

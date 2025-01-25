@@ -1,7 +1,7 @@
 
 
 <div class="search-cart">
-        <input type="text" placeholder="Search">
+        <input type="text" placeholder="Search" />
         <div class="cart"><a href="carrello.php">🛒</a></div>
     </div>
 
