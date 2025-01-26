@@ -182,6 +182,17 @@
         </form>
     </div>
 
+    <?php
+        if (isset($_POST['categorie']) && is_array($_POST['categorie'])) {
+            $categorieSelezionate = $_POST['categorie'];
+            $templateParams["articoli"] = [];
+            foreach ($categorieSelezionate as $idCategoria) {
+                $articoli = $dbh->getPostByCategory($idCategoria);
+                $templateParams["articoli"] = array_merge($templateParams["articoli"], $articoli);
+            }
+        }
+    ?>
+
     <div class="content">
         <?php if (!empty($templateParams["articoli"])): ?>
             <?php foreach ($templateParams["articoli"] as $articolo): ?>
