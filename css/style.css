@@ -7,7 +7,8 @@ body {
     justify-content: space-between;
     height: 100vh;
 }
-header{
+
+header {
     background-color: #90caf9;
     color: white;
     text-align: center;
@@ -17,22 +18,25 @@ header{
     align-items: center;
     justify-content: center;
 }
+
 .search-cart {
     display: flex;
+    flex-direction: column;
     align-items: center;    /* Allinea verticalmente gli elementi della barra */
     gap: 10px;              /* Spazio tra input e icona del carrello */
-    justify-content: center;
 }
 
 .search-cart input[type="text"] {
     padding: 5px;
     font-size: 1em;
+    width: 80%;             /* Occupa la maggior parte dello schermo su mobile */
 }
 
 .search-cart .cart {
     font-size: 1.5em;       /* Dimensione dell'icona del carrello */
     cursor: pointer;
 }
+
 footer {
     background-color: #90caf9;
     color: white;
@@ -40,10 +44,13 @@ footer {
     padding: 10px 20px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    flex-direction: column; /* Cambia la disposizione in verticale per mobile */
 }
+
 nav {
     display: flex;
+    flex-direction: column; /* Lista verticale per mobile */
     gap: 15px;
     text-align: center;
     justify-content: center;
@@ -66,29 +73,26 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 0 ;
-    width: 100%;
+    margin: 0;
+    width: 90%;
 }
 
 .container {
     display: flex;
+    flex-direction: column; /* Mobile-first: disposizione verticale */
     padding: 10px;
-    width: 80%;
+    width: 100%;
 }
 
 .sidebar {
-    width: 20%;
-}
-
-.sidebar label {
-    display: block;
-    margin-bottom: 10px;
+    width: 100%; /* Sidebar occupa tutta la larghezza su dispositivi mobili */
+    margin-bottom: 15px;
 }
 
 .content {
-    width: 80%;
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr; /* Solo una colonna per dispositivi mobili */
     gap: 15px;
 }
 
@@ -102,49 +106,78 @@ main {
 }
 
 main h1 {
-    color: #90caf9; 
+    color: #90caf9;
 }
+
 .button-container {
     display: flex;
+    flex-direction: column; /* Disposizione verticale per dispositivi mobili */
     gap: 20px;
     margin-top: 20px;
 }
-.button {
-    border: 1px solid black;
-    padding: 10px 20px;
-    font-size: 18px;
-    cursor: pointer;
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-}
-.button:hover {
-    background-color: #e0f7fa;
-}
 
-/* Footer */
-footer {
+button, input[type="submit"]{
     background-color: #90caf9;
     color: white;
-    text-align: center;
-    padding: 20px;
-}
-
-footer div {
-    display: flex;
-    justify-content: space-between;
     padding: 10px 20px;
-    margin-bottom: 10px;
-}
-
-footer a {
-    color: white;
-    text-decoration: none;
-}
-
-footer input[type="email"] {
-    padding: 5px;
-    border: none;
     border-radius: 5px;
-    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
 }
+
+button:hover, input[type="submit"]:hover{
+    background-color: #42a5f5;
+}
+
+/* Media Queries per tablet e desktop */
+
+@media (min-width: 600px) {
+    .search-cart {
+        flex-direction: row; /* Allinea orizzontalmente per tablet e desktop */
+    }
+
+    .search-cart input[type="text"] {
+        width: 50%; /* Riduci la larghezza del campo di input */
+    }
+
+    nav {
+        flex-direction: row; /* Navbar orizzontale per schermi più grandi */
+        gap: 30px;
+    }
+
+    .container {
+        flex-direction: row; /* Affianca la sidebar e il contenuto */
+        width: 80%;
+    }
+
+    .sidebar {
+        width: 25%; /* Sidebar prende il 25% della larghezza */
+        margin-bottom: 0;
+    }
+
+    .content {
+        grid-template-columns: repeat(3, 1fr); /* 3 colonne per schermi più larghi */
+    }
+
+    .button-container {
+        flex-direction: row; /* Disposizione orizzontale per i bottoni */
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        width: 80%;
+    }
+
+    .content {
+        grid-template-columns: repeat(4, 1fr); /* 4 colonne per desktop */
+    }
+
+    .button-container {
+        gap: 30px; /* Più spazio tra i bottoni */
+    }
+}
+
+

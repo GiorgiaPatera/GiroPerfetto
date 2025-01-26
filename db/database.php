@@ -174,6 +174,12 @@ class DatabaseHelper{
         $stmt->bind_param('i',$articolo);
         return $stmt->execute();
     }
+    public function deleteCartOfArticle($articolo){
+        $query = "DELETE FROM venditore_ha_articolo WHERE articolo = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$articolo);
+        return $stmt->execute();
+    }
 
     public function getAuthors(){
         $query = "SELECT username, nome, GROUP_CONCAT(DISTINCT nomecategoria) as argomenti FROM categoria, articolo, autore, articolo_ha_categoria WHERE idarticolo=articolo AND categoria=idcategoria AND autore=idautore AND attivo=1 GROUP BY username, nome";

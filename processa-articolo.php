@@ -39,16 +39,17 @@ if($_POST["action"]==2){
     $venditore = $_SESSION["idvenditore"];
     $prezzoarticolo = htmlspecialchars($_POST["prezzoarticolo"]);
 
-    if(isset($_POST["imgarticolo"])){
-        list($result, $msg) = uploadImage(UPLOAD_DIR, $_POST["imgarticolo"]);
-        if($result == 0){
-            header("location: index.php?formmsg=".$msg);
-        }
-        $imgarticolo = $msg;
+    if($_POST["imgarticolo"] != null){
+        $imgarticolo = htmlspecialchars($_POST["imgarticolo"]);
+        // list($result, $msg) = uploadImage(UPLOAD_DIR, htmlspecialchars($_POST["imgarticolo"]));
+        // if($result == 0){
+        //     header("location: index.php?formmsg=".$msg);
+        // }
+        // $imgarticolo = $msg;
 
     }
     else{
-        $imgarticolo = $_POST["oldimg"];
+        $imgarticolo = $dbh->getPostById($idarticolo)[0]["imgarticolo"];
     }
 
     $dbh->updateArticleOfAuthor($idarticolo, $titoloarticolo, $testoarticolo, $dataarticolo, $imgarticolo, $venditore, $prezzoarticolo);

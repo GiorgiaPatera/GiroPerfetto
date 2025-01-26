@@ -1,9 +1,9 @@
-
 <head>
     <style>
+        /* Base Mobile First Styles */
         .flex-container {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column; /* Colonne per schermi mobili */
             align-items: center;
             width: 100%;
         }
@@ -14,16 +14,12 @@
             padding: 20px 30px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
             text-align: left;
-            width: 50%;
+            width: 100%; /* Occupa il 100% della larghezza su dispositivi mobili */
             margin: auto;
         }
 
-        .registration-form h1 {
-            color: white;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .registration-form h1,p{
+        .registration-form h1,
+        .registration-form p {
             color: white;
             text-align: center;
             margin-bottom: 20px;
@@ -64,14 +60,42 @@
         }
 
         .image-container {
-            width: 50%;
+            width: 100%; /* Occupa tutta la larghezza su dispositivi mobili */
             text-align: center;
+            margin-top: 20px;
         }
 
         .image-container img {
             max-width: 100%;
             height: auto;
             border-radius: 10px;
+        }
+
+        /* Media Query per schermi più larghi */
+        @media (min-width: 768px) {
+            .flex-container {
+                flex-direction: row; /* Disposizione orizzontale per schermi più grandi */
+                justify-content: space-between;
+            }
+
+            .registration-form {
+                width: 50%; /* La form occupa il 50% della larghezza sui dispositivi più larghi */
+            }
+
+            .image-container {
+                width: 50%; /* L'immagine occupa il 50% della larghezza */
+            }
+        }
+
+        /* Media Query per schermi ancora più grandi (desktop) */
+        @media (min-width: 1024px) {
+            .registration-form {
+                width: 40%; /* Ancora più stretta sui desktop */
+            }
+
+            .image-container {
+                width: 40%; /* Ancora più stretta per l'immagine */
+            }
         }
     </style>
 </head>
@@ -105,5 +129,3 @@
         <img src="img/macchina.png" alt="Immagine della macchina">
     </div>
 </div>
-
-

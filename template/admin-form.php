@@ -1,60 +1,107 @@
 <head>
     <style>
-    /* Stile per la sezione Aggiungi articolo */
+    /* Stile mobile-first */
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    .add-car-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        background: #f4f4f9;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .add-car-form .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .add-car-form label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+
+    .add-car-form input,
+    .add-car-form textarea {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    .add-car-form textarea {
+        resize: none;
+        height: 80px;
+    }
+
+    .add-car-form .btn-submit, .add-car-form > a {
+        padding: 12px;
+        background-color: #90caf9;
+        color: white;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        transition: background-color 0.3s;
+        margin-top: 10px;
+    }
+
+    .add-car-form .btn-submit:hover, .add-car-form > a:hover {
+        background-color: #60a4d3;
+    }
+
+    .add-car-form > a {
+        text-decoration: none;
+        text-align: center;
+        display: block;
+    }
+
+    /* Stile per dispositivi più grandi (tablet e desktop) */
+    @media (min-width: 600px) {
         .add-car-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            background: #f4f4f9;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 80%;
         }
 
-        .add-car-form .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .add-car-form label {
-            font-weight: bold;
-            margin-bottom: 5px;
-            font-size: 14px;
+        .add-car-form .form-group label {
+            font-size: 16px;
         }
 
         .add-car-form input,
         .add-car-form textarea {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-
-        .add-car-form textarea {
-            resize: none;
-            height: 80px;
-        }
-
-        .add-car-form .btn-submit, .add-car-form > a {
-            padding: 10px 20px;
-            background-color: #90caf9;
-            color: white;
             font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            transition: background-color 0.3s;
         }
 
-        .add-car-form .btn-submit:hover,  .add-car-form > a:hover {
-            background-color: #90caf9;
+        .add-car-form .btn-submit {
+            font-size: 18px;
         }
+
         .add-car-form > a {
-            text-decoration: none;
+            font-size: 16px;
         }
+    }
+
+    @media (min-width: 768px) {
+        .add-car-form {
+            width: 60%;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .add-car-form {
+            width: 50%;
+        }
+    }
     </style>
 </head>
+
 
 <?php 
     $articolo = $templateParams["articolo"]; 
