@@ -41,7 +41,6 @@ switch($_GET["page"]){
         }
         break;
     case "login":
-        //logout();
         if(isset($_POST["username"]) && isset($_POST["password"])){
             $login_result = $dbh->checkLogin($_POST["username"], $_POST["password"]);
             if(count($login_result)==0){

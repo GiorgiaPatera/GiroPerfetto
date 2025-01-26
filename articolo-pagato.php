@@ -13,6 +13,8 @@ if (isset($_GET["id"]) && in_array($dbh->getPostById($_GET["id"])[0], $_SESSION[
 }
 $dbh->deleteCategoriesOfArticle($idarticolo);
 $dbh->deleteArticle($idarticolo);
-$msg = "Cancellazione completata correttamente!";
+$dbh->insertNotifica("Pagamento Accettato");
+$idnotifica = $dbh->getLastNotifica();
+$dbh->insertNotificaAlVenditore($_SESSION["idvenditore"], $idnotifica); 
 header("location: index.php?page=home");
 ?>

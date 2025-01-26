@@ -101,8 +101,13 @@
                 <label for="cvc">CVV/CVC:</label>
                 <input type="password" id="cvc" placeholder="XXX" required />
             </div>
-            <input type="submit" class="btn-submit" name="submit" value="Paga" onclick="alert('Pagamento accettato!')"/>
+            <input type="submit" class="btn-submit" name="submit" value="Paga" onclick="mostraNotifica()" />
             </form>
     </section>
     </div>
 </div>
+<script type="text/javascript">
+    function mostraNotifica(){
+        window.alert("Pagamento Accettato");
+    }
+</script>

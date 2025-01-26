@@ -4,5 +4,6 @@ $templateParams["titolo"]="GiroPerfetto";
 $templateParams["nome"] = "Pagamento";
 $templateParams["contenuto"] = "base-pagamento.php";
 $templateParams["articoli"] = $dbh->getPostById($_GET["id"]);
+//$templateParams["js"] = array("js/notifiche.js");
 require 'template/base.php';
 ?>

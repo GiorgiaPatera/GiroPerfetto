@@ -211,5 +211,37 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+    public function insertNotifica($testonotifica){
+        $letto = 0;
+        $query = "INSERT INTO notifiche (contenutonotifica, letto) VALUES (?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si',$testonotifica, $letto);
+        $stmt->execute();
+        
+        return $stmt->insert_id;
+    }
+
+    public function insertNotificaAlVenditore($venditore, $notifica){
+        $query = "INSERT INTO venditore_ha_notifiche (venditore, notifica) VALUES (?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii',$venditore, $notifica);
+        return $stmt->execute();
+    }
+
+    public function getLastNotifica(){
+        $query = "SELECT idnotifica FROM notifiche ORDER BY idnotifica DESC LIMIT 1";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function insertArticleAlVenditore($venditore, $articolo){
+        $query = "INSERT INTO venditore_ha_articolo (venditore, articolo) VALUES (?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii',$venditore, $articolo);
+        return $stmt->execute();
+    }
 }
 ?>

@@ -94,7 +94,8 @@ CREATE TABLE IF NOT EXISTS `GiroPerfettoDataBase`.`venditore_ha_articolo` (
   `articolo` INT NOT NULL,
   PRIMARY KEY (`venditore`, `articolo`),
   INDEX `fk_venditore_has_articolo_articolo1_idx` (`articolo` ASC) ,
-  CONSTRAINT `fk_veditore_has_articolo_venditore1`
+  INDEX `fk_venditore_has_articolo_venditore1_idx` (`venditore` ASC),
+  CONSTRAINT `fk_venditore_has_articolo_venditore1`
     FOREIGN KEY (`venditore`)
     REFERENCES `GiroPerfettoDataBase`.`venditore` (`idvenditore`)
     ON DELETE NO ACTION
@@ -112,7 +113,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `GiroPerfettoDataBase`.`notifiche` (
   `idnotifica` INT NOT NULL AUTO_INCREMENT,
-  `contentonotifica` VARCHAR(100) NOT NULL,
+  `contenutonotifica` VARCHAR(100) NOT NULL,
   `letto` INT NOT NULL,
   PRIMARY KEY (`idnotifica`))
 ENGINE = InnoDB;
@@ -126,7 +127,8 @@ CREATE TABLE IF NOT EXISTS `GiroPerfettoDataBase`.`venditore_ha_notifiche` (
   `notifica` INT NOT NULL,
   PRIMARY KEY (`venditore`, `notifica`),
   INDEX `fk_venditore_has_notifiche_notifica1_idx` (`notifica` ASC) ,
-  CONSTRAINT `fk_venditore_has_norifiche_venditore1`
+  INDEX `fk_venditore_has_notifiche_venditore1_idx` (`venditore` ASC),
+  CONSTRAINT `fk_venditore_has_notifiche_venditore1`
     FOREIGN KEY (`venditore`)
     REFERENCES `GiroPerfettoDataBase`.`venditore` (`idvenditore`)
     ON DELETE NO ACTION
