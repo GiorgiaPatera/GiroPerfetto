@@ -35,25 +35,11 @@
         <div>Servizi: Vendita auto nuove | Vendita auto usate | Pronta consegna</div>
         <div><img src="img/GiroPerfettoLogo.png" alt=""/></div>
         <div class="subscribe">
+
             <input type="email" placeholder="Enter Email">
-            <!-- da mettere nel file css -->
-            <style> div button a {color: black;}
-            .content div:hover {transition-duration: 0.5s; width: 105%; height: 170px;}
-            .content div {transition-duration: 0.5s; width: 100%; height: 150px;}
-            .content div a aside {text-decoration: none; color: black;}
-            </style>
-            <button><a href = "index.php?page=login">Accedi</a></button>
+            <a href = "index.php?page=login">Accedi</a>
         </div>
     </footer>
-    <?php
-    if(isset($templateParams["js"])):
-        foreach($templateParams["js"] as $script):
-    ?>
-        <script src="<?php echo $script; ?>"></script>
-    <?php
-        endforeach;
-    endif;
-    ?>
     
 </body>
 </html>
