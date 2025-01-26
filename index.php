@@ -33,7 +33,11 @@ switch($_GET["page"]){
         $templateParams["titolo"] = "GiroPerfetto - Notifiche";
         $templateParams["nome"] = "Notifiche";
         $templateParams["contenuto"] = "base-notifiche.php";
-        $templateParams["notifiche"] = $dbh->getNotificationsByAuthorId($_SESSION["idvenditore"]);
+        if(isset($_SESSION["idvenditore"])){
+            $templateParams["notifiche"] = $dbh->getNotificationsByAuthorId($_SESSION["idvenditore"]);
+        }else{
+            $templateParams["notifiche"] = [];
+        }
         break;
     case 'registration':
         $templateParams["titolo"] = "GiroPerfetto - Registrazione";

@@ -15,6 +15,6 @@ $dbh->deleteCategoriesOfArticle($idarticolo);
 $dbh->deleteArticle($idarticolo);
 $dbh->insertNotifica("Pagamento Accettato");
 $idnotifica = $dbh->getLastNotifica();
-$dbh->insertNotificaAlVenditore($_SESSION["idvenditore"], $idnotifica); 
+$dbh->insertNotificaAlVenditore($_SESSION["idvenditore"], $idnotifica[0]["idnotifica"]); 
 header("location: index.php?page=home");
 ?>
