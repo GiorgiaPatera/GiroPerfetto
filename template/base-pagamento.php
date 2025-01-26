@@ -9,10 +9,10 @@
             padding: 0;
         }
 
-        h1, h2 {
+        h2 {
             font-size: 24px;
             color: #90caf9;
-            text-align: center;
+            text-align: left;
             margin: 20px 0;
         }
 
@@ -113,7 +113,7 @@
             <img src="<?php echo UPLOAD_DIR.$articolo["imgarticolo"]; ?>" alt="" />
         </div>
         <div class="product-details">
-            <h1><?php echo $articolo["titoloarticolo"]; ?></h1>
+            <h2><?php echo $articolo["titoloarticolo"]; ?></h2>
             <div class="prezzo"><?php echo "€"; echo $articolo["prezzoarticolo"]; ?></div>
             <p><?php echo $articolo["testoarticolo"]; ?></p>
             <p><b>Venditore:</b></p>

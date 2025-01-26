@@ -81,7 +81,7 @@
             }
 
             .car img {
-                width: 70%; /* Ridurre la dimensione dell'immagine su schermi più larghi */
+                width: 100%; /* Ridurre la dimensione dell'immagine su schermi più larghi */
                 height: auto;
             }
 
@@ -97,8 +97,9 @@
 
         @media (min-width: 1024px) {
             .car img {
-                width: 70%; /* Ancora più piccolo su desktop */
+                width: 100%; /* Ancora più piccolo su desktop */
             }
+
 
             .car p {
                 font-size: 1.2em;
