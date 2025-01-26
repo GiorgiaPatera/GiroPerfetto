@@ -48,7 +48,7 @@
         }
 
         .add-car-form .btn-submit:hover,  .add-car-form > a:hover {
-            background-color: #42a5f5;
+            background-color: #90caf9;
         }
         .add-car-form > a {
             text-decoration: none;

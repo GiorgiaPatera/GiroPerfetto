@@ -243,6 +243,12 @@ class DatabaseHelper{
         $stmt->bind_param('ii',$venditore, $articolo);
         return $stmt->execute();
     }
+    public function deleteArticleAlVenditore($venditore, $articolo){
+        $query = "DELETE FROM venditore_ha_articolo WHERE venditore = ? AND articolo = ? ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii',$venditore, $articolo);
+        return $stmt->execute();
+    }
 
     public function getNotificationsByAuthorId($venditore){
         $query = "SELECT notifica FROM venditore_ha_notifiche WHERE venditore = ?";
@@ -270,6 +276,15 @@ class DatabaseHelper{
         $stmt->bind_param('ii',$letto, $idnotifica);
         
         return $stmt->execute();
+    }
+    public function getArticlesByAuthors($venditore){
+        $query = "SELECT articolo FROM venditore_ha_articolo WHERE venditore = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$venditore);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 }
 ?>

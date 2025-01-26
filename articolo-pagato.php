@@ -13,7 +13,7 @@ if (isset($_GET["id"]) && in_array($dbh->getPostById($_GET["id"])[0], $_SESSION[
 }
 $dbh->deleteCategoriesOfArticle($idarticolo);
 $dbh->deleteArticle($idarticolo);
-$dbh->insertNotifica("Pagamento Accettato");
+$dbh->insertNotifica("Pagamento Accettato, la consegna verrà effettuata all'interno del Campus di Cesena.");
 $idnotifica = $dbh->getLastNotifica();
 $dbh->insertNotificaAlVenditore($_SESSION["idvenditore"], $idnotifica[0]["idnotifica"]); 
 header("location: index.php?page=home");

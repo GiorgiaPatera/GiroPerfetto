@@ -12,7 +12,7 @@
             transition: background-color 0.3s;
         }
         button:hover{
-            background-color: #42a5f5;
+            background-color: #90caf9;
         }
         img {
             margin: 20px;

@@ -52,17 +52,6 @@
             font-size: 14px;
         }
 
-        .login-form .remember-me {
-            display: flex;
-            align-items: center;
-            justify-content: left;
-            margin-bottom: 15px;
-        }
-
-        .login-form .remember-me input[type="checkbox"] {
-            margin-right: 5px;
-        }
-
         .login-form button {
             width: 100%;
             padding: 10px;
@@ -123,10 +112,6 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" placeholder="Inserisci la tua password" required />
 
-        <div class="remember-me">
-            <input type="checkbox" id="remember" name="remember"/>
-            <label for="remember">Remember me</label>
-        </div>
 
         <button type="submit" name="submit" class="login-btn">Accedi</button>
     </form>
