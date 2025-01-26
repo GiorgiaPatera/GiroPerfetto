@@ -202,7 +202,7 @@ class DatabaseHelper{
         return true;
     }
     public function searchArticle($research){
-        $string = "'".$research."%'";
+        $string = "%".$research."%";
         $query = "SELECT idarticolo, titoloarticolo, imgarticolo, dataarticolo, prezzoarticolo FROM articolo WHERE titoloarticolo LIKE ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s',$string);
