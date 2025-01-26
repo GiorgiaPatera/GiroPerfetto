@@ -30,6 +30,10 @@ switch($_GET["page"]){
         $templateParams["articoli"] = $dbh->getPostByCategory(14);
         break;
     case "notifiche":
+        $templateParams["titolo"] = "GiroPerfetto - Notifiche";
+        $templateParams["nome"] = "Notifiche";
+        $templateParams["contenuto"] = "base-notifiche.php";
+        $templateParams["notifiche"] = $dbh->getNotificationsByAuthorId($_SESSION["idvenditore"]);
         break;
     case 'registration':
         $templateParams["titolo"] = "GiroPerfetto - Registrazione";

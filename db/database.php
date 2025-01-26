@@ -243,5 +243,33 @@ class DatabaseHelper{
         $stmt->bind_param('ii',$venditore, $articolo);
         return $stmt->execute();
     }
+
+    public function getNotificationsByAuthorId($venditore){
+        $query = "SELECT notifica FROM venditore_ha_notifiche WHERE venditore = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$venditore);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getNotificationById($idnotifica){
+        $query = "SELECT contenutonotifica, letto FROM notifiche WHERE idnotifica = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$idnotifica);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function setLetto($idnotifica, $letto){
+        $query = "UPDATE notifiche SET letto = ? WHERE idnotifica = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii',$letto, $idnotifica);
+        
+        return $stmt->execute();
+    }
 }
 ?>
