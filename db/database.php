@@ -61,7 +61,7 @@ class DatabaseHelper{
     }
 
     public function getPostById($id){
-        $query = "SELECT idarticolo, titoloarticolo, imgarticolo, testoarticolo, dataarticolo, nome, prezzoarticolo FROM articolo, venditore WHERE idarticolo=? AND venditore=idvenditore";
+        $query = "SELECT idarticolo, titoloarticolo, imgarticolo, testoarticolo, dataarticolo, venditore, prezzoarticolo FROM articolo, venditore WHERE idarticolo=? AND venditore=idvenditore";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i',$id);
         $stmt->execute();
@@ -71,7 +71,7 @@ class DatabaseHelper{
     }
 
     public function getPostByCategory($idcategory){
-        $query = "SELECT idarticolo, titoloarticolo, imgarticolo, dataarticolo, nome, prezzoarticolo FROM articolo, venditore, articolo_ha_categoria WHERE categoria=? AND venditore=idvenditore AND idarticolo=articolo";
+        $query = "SELECT idarticolo, titoloarticolo, imgarticolo, dataarticolo, venditore, prezzoarticolo FROM articolo, venditore, articolo_ha_categoria WHERE categoria=? AND venditore=idvenditore AND idarticolo=articolo";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i',$idcategory);
         $stmt->execute();
